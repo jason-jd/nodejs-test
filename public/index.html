@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NODEJS TEST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <!-- <input type="text" id="first_name"><br>
+  <input type="text" id="last_name"><br>
+  <input type="text" id="telephone"><br> -->
+  <button onclick="hello()">click</button>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDtbWSWCWqZn-p0PIc_At0vp3xqhHima7o",
+    authDomain: "nodejs-test-2a475.firebaseapp.com",
+    databaseURL: "https://nodejs-test-2a475.firebaseio.com",
+    projectId: "nodejs-test-2a475",
+    storageBucket: "nodejs-test-2a475.appspot.com",
+    messagingSenderId: "1013371009132"
+  };
+  firebase.initializeApp(config);
+
+  function hello(){
+    $.ajax({
+      url: 'https://us-central1-nodejs-test-2a475.cloudfunctions.net/addMessage',
+      dataType: "jsonp",
+      method: 'POST',
+      crossDomain: true,
+      data: {original:"hello"},
+      success: function(data){
+        console.log('succes: '+JSON.stringify(data));
+      }
+    });
+  }
+</script>
+</html>
